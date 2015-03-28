@@ -176,67 +176,6 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
             hasHelp: true,
             warnOnClose: true
         })
-        .state('root.step2', { // +- grid
-            url: '/step2',
-            templateUrl: 'templates/step2.html',
-            controller: 'Step2Ctrl',
-            resolve: {
-                messageHead: ['language', function(language) {
-                    return language.step2Head;
-                }],
-                message: ['language', function(language) {
-                    return language.step2Text;
-                }]
-            },
-            hasHelp: true,
-            noBackButton: true,
-            warnOnClose: true
-        })
-        .state('root.step3', { // reorder grid
-            url: '/step3',
-            templateUrl: 'templates/step3.html',
-            controller: 'Step3Ctrl',
-            resolve: {
-                messageHead: ['language', function(language) {
-                    return language.step3Head;
-                }],
-                message: ['language', function(language) {
-                    return language.step3Text;
-                }]
-            },
-            hasHelp: true,
-            warnOnClose: true
-        })
-        .state('root.step4', { // comments for best and worst rating
-            url: '/step4',
-            templateUrl: 'templates/step4.html',
-            controller: 'Step4Ctrl',
-            resolve: {
-                messageHead: ['language', function(language) {
-                    return language.step4Head;
-                }],
-                message: ['language', function(language) {
-                    return language.step4Text;
-                }]
-            },
-            hasHelp: true,
-            warnOnClose: true
-        })
-        .state('root.step5', { // demographics or questionnaire
-            url: '/step5',
-            templateUrl: 'templates/step5.html',
-            controller: 'Step5Ctrl',
-            resolve: {
-                messageHead: ['language', function(language) {
-                    return language.step5Head;
-                }],
-                message: ['language', function(language) {
-                    return language.step5Text;
-                }]
-            },
-            hasHelp: true,
-            warnOnClose: true
-        })
         .state('root.submit', { // demographics or questionnaire
             url: '/submit?retry',
             templateUrl: 'templates/submit.html',
@@ -899,7 +838,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
     };
     $scope.$on('help', $scope.help)
     $scope.next = function() {
-        $state.go('root.step2');
+        $state.go('root.submit');
     };
     $scope.$on('next', $scope.next);
 
@@ -1185,6 +1124,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
         if (UserCode.userCode && UserCode.userCode.length > 0) {
             ret.uid = UserCode.userCode;
         }
+
         for (var i = 0; i < SortedStatements.grid[0].length; i++) {
             var statement = SortedStatements.grid[0][i].statement;
             ret['comment' + statement._id] = '(s' + statement._id + ') ' + statement.comment;
@@ -1283,7 +1223,8 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
         return ret;
     };
 
-    $scope.mailText = createMailText();
+//    $scope.mailText = createMailText();
+    $scope.mailText = function() {};
 }])
 
 .controller('PrintCtrl', ['language', 'config', 'map', 'SortedStatements', 'Survey', 'Duration', 'UserCode', '$timeout', '$scope', '$state', function(language, config, map, SortedStatements, Survey, Duration, UserCode, $timeout, $scope, $state) {
