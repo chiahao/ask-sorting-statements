@@ -6,6 +6,27 @@
             <p ng-if="firstTry" ng-bind-html="language.transferText"></p>
             <p ng-if="!firstTry" ng-bind-html="language.transferFailed"></p>
 
+            <div>
+		   	<h2>Agree</h2>
+                        <ul>
+                            <li ng-repeat="statement in sortedStatements.agree" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span></li>
+                        </ul>
+            </div>
+
+            <div>
+		   	<h2>Neaurl</h2>
+                        <ul>
+                            <li ng-repeat="statement in sortedStatements.neaurl" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span></li>
+                        </ul>
+            </div>
+
+            <div>
+			<h2>Disagree</h2>
+                        <ul>
+                            <li ng-repeat="statement in sortedStatements.disagree" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span></li>
+                        </ul>
+            </div>
+
             <p ng-if="config.submitUrl">
                 <a href="" ng-click="submitViaHttp()" class="btn btn-primary" ng-bind-html="language.btnTransfer"></a>
             </p>
