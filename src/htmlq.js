@@ -1223,6 +1223,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
         return ret;
     };
 
+    $scope.SortedStatements = SortedStatements;
 //    $scope.mailText = createMailText();
     $scope.mailText = function() {};
 }])
