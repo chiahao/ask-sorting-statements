@@ -1,0 +1,5 @@
+- progress percentag is wrong.
+- a simple backend for collecting data. 
+- sharing results via social network.
+- display statistics.
+- give some feedback after drpop a card in step1.
