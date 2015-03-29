@@ -1104,35 +1104,32 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
     }
 
     function makeParamsObject() {
-        var statements = getOrderedStatementsFromGrid(SortedStatements);
-        var sorted = makeSortString(statements);
+        function clean(statements){
+            var ret = [];
+            for(var cat in statements){
+                if(cat === 'agree' || cat === 'neutral' || cat === 'disagree'){
+                    for(var idx in statements[cat]){
+                        ret.push(statements[cat][idx]);
+                    }
+                }
+            }
+            return ret;
+        }
+        function getIds(statements, cat) {
+            return _.map(_.filter(statements, function(s) { return s.category === cat; }), 
+                function(s) { return s._id; });
+        }
+        var statements = clean(SortedStatements);
         var ret = {
-            dur0: Math.round(Duration[0] + Duration[1] + Duration[2] + Duration[3] + Duration[4]),
-            dur1: Math.round(Duration[0]),
-            dur2: Math.round(Duration[1]),
-            dur3: Math.round(Duration[2]),
-            dur4: Math.round(Duration[3]),
-            dur5: Math.round(Duration[4]),
             datetime: $.format.date(new Date(), 'yyyy-MM-dd HH:mm:ss'),
-            sort: sorted.join('|'),
             name: config['studyTitle'] + ' ' + config['_version'],
-            npos: _.filter(statements, function(s) { return s.category === 'agree'; }).length,
-            nneu: _.filter(statements, function(s) { return s.category === 'neutral'; }).length,
-            nneg: _.filter(statements, function(s) { return s.category === 'disagree'; }).length
+            agree: getIds(statements, 'agree'),
+            neutral: getIds(statements, 'neutral'),
+            disagree: getIds(statements, 'disagree')
         };
 
         if (UserCode.userCode && UserCode.userCode.length > 0) {
             ret.uid = UserCode.userCode;
-        }
-
-        for (var i = 0; i < SortedStatements.grid[0].length; i++) {
-            var statement = SortedStatements.grid[0][i].statement;
-            ret['comment' + statement._id] = '(s' + statement._id + ') ' + statement.comment;
-        }
-
-        for (var i = 0; i < SortedStatements.grid[SortedStatements.grid.length - 1].length; i++) {
-            var statement = SortedStatements.grid[SortedStatements.grid.length - 1][i].statement;
-            ret['comment' + statement._id] = '(s' + statement._id + ') ' + statement.comment;
         }
 
         var ct = 0;
@@ -1168,10 +1165,10 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
             success(function(data, status) {
                 // in FireFox, if you open HtmlQ via the file:// protocol and the POST or GET to the default path
                 // just returns the source code of the PHP script. In this case we assume failure even though the response is HTTP 200
-                if (data.indexOf("<?php") === 0) {
-                    $state.go('root.submit', {retry: $stateParams.retry ? parseInt($stateParams.retry, 10) + 1 : 1});
-                } else {
+                if(data.status === 'success'){
                     $state.go('root.thanks');
+                }else{
+                    // handle submit error.
                 }
             }).
             error(function() {
