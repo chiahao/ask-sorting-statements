@@ -1264,7 +1264,14 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
     $timeout(window.print, 200);
 }])
 
-.controller('ThanksCtrl', [function() {
+.controller('ThanksCtrl', ['language', 'config', 'paragraphs', 'map', 'SortedStatements', 'Survey', 'Duration', 'UserCode', '$http', '$scope', '$state', '$stateParams', '$log', function(language, config, paragraphs, map, SortedStatements, Survey, Duration, UserCode, $http, $scope, $state, $stateParams, $log) {
+    $scope.sortedStatements = SortedStatements;
+    $scope.paragraphsMap = [];
+    for(var i = 0; i < paragraphs.length; i++){
+        var paragraph = paragraphs[i];
+        $scope.paragraphsMap[paragraph._id] = paragraph;
+    }
+    console.log($scope.paragraphsMap);
 }])
 
 .service('MessageModal', ['$modal', function($modal) {
