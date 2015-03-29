@@ -70,7 +70,7 @@
   </item>
 
   <!-- URL for data transmission via POST/GET (leave blank if not required) -->
-  <item id="submitUrl">exe.php?do=save</item>
+  <item id="submitUrl">http://localhost:1337/submit</item>
   <!-- request mode (post|get) -->
   <item id="submitUrlMethod">post</item>
 
