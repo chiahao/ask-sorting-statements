@@ -93,6 +93,19 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
                         });
                     });
                 }],
+                'paragraphs': ['$http', '$sce', function($http, $sce) {
+                    return $http.get('settings/paragraphs.xml', {
+                        transformResponse: xml2json
+                    }).then(function(data, status) {
+                        var parseHtml = data.data.paragraphs._htmlParse === 'true';
+                        return _.map(data.data.paragraphs.paragraph, function(paragraph) {
+                            return {
+                                _id: paragraph._id,
+                                __text: transformTextToHtml($sce, paragraph.__text, parseHtml)
+                            }
+                        });
+                    });
+                }],                
                 'map': ['$http', function($http) {
                     return $http.get('settings/map.xml', {
                         transformResponse: xml2json
@@ -197,9 +210,10 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
     $urlRouterProvider.otherwise('/');
 }])
 
-.controller('RootCtrl', ['language', 'statements', 'map', 'config', 'configXml', 'SortedStatements', 'Survey', 'Duration', '$sce', '$scope', '$state', '$log', function(language, statements, map, config, configXml, SortedStatements, Survey, Duration, $sce, $scope, $state, $log) {
+.controller('RootCtrl', ['language', 'statements', 'paragraphs', 'map', 'config', 'configXml', 'SortedStatements', 'Survey', 'Duration', '$sce', '$scope', '$state', '$log', function(language, statements, paragraphs, map, config, configXml, SortedStatements, Survey, Duration, $sce, $scope, $state, $log) {
     $scope.language = language;
     $scope.statements = statements;
+    $scope.paragraphs = paragraphs;
     $scope.map = map;
     $scope.config = config;
     $scope.configXml = configXml;
