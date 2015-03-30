@@ -14,4 +14,16 @@ describe('AnswerController', function(){
         });
     });
   });
+  describe('#stats()', function () {
+    it('should return empty stats if no one submit else.', function(done){
+      request(sails.hooks.http.app)
+        .get('/stats')
+        .expect(200)
+        .end(function(err, res) {
+          res.body.status.should.eq('success');
+          res.body.data.should.deep.eq([]);
+          done();
+        })
+    });
+  });
 });

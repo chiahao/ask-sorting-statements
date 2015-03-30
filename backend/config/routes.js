@@ -37,6 +37,7 @@ module.exports.routes = {
 // },
 
   'post /submit': 'Answer.submit',
+  'get /stats': 'Answer.stats'
 
   /***************************************************************************
   *                                                                          *

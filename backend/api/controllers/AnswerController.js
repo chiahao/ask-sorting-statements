@@ -10,6 +10,12 @@ module.exports = {
     return res.json({
       status: 'success'
     });
+  },
+  stats: function (req, res) {
+    return res.json({
+      status: 'success',
+      data: []
+    });
   }
 };
 
