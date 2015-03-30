@@ -8,7 +8,18 @@
 module.exports = {
 
   attributes: {
-
+    agree: {
+      type: 'json',
+      required: true
+    },
+    disagree: {
+      type: 'json',
+      required: true
+    },
+    neutral: {
+      type: 'json',
+      required: true
+    }
   }
 };
 
