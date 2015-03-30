@@ -7,7 +7,6 @@
 
 module.exports = {
   submit: function(req, res){
-    console.log(req);
     return res.json({
       status: 'success'
     });
