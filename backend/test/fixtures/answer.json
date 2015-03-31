@@ -1,0 +1,17 @@
+[
+	{
+		"agree": [1,2],
+		"neutral":[3,4],
+		"disagree": [5]
+	},
+	{
+		"agree": [1,2],
+		"neutral":[3,4],
+		"disagree": []
+	},
+	{
+		"agree": [1,2],
+		"neutral":[],
+		"disagree": []
+	}
+]
