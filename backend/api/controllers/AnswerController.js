@@ -7,9 +7,19 @@
 
 module.exports = {
   submit: function(req, res){
-    return res.json({
-      status: 'success'
-    });
+    Answer.create(req.body).exec(function(err, answer){
+      if(err){
+        res.json({
+            //@TODO: response error messages.
+            status: 'fail'
+          });
+      }else{
+        return res.json({
+            createdAnswer: answer,
+            status: 'success'
+            });
+        }
+      });
   },
   stats: function (req, res) {
     return res.json({
