@@ -27,7 +27,7 @@ module.exports = {
     Answer.find().exec(function(err, answers){
       if(err) return cb(err);
       var result = {};
-      _.map(result, function(e){
+      _.map(answers, function(e){
         var count = function(id, cat){
           if(!result[id]){
             result[id] = {agree:0, disagree:0, neutral:0};
