@@ -22,10 +22,14 @@ module.exports = {
       });
   },
   stats: function (req, res) {
-    return res.json({
-      status: 'success',
-      data: []
+    Answer.stats(function(err, stats){
+      if(err) return res.json({status:'fail'});
+      return res.json({
+        status: 'success',
+        data: stats
+      });
     });
   }
+
 };
 
