@@ -11,15 +11,12 @@ module.exports = {
   attributes: {
     agree: {
       type: 'array',
-      required: true
     },
     disagree: {
       type: 'array',
-      required: true
     },
     neutral: {
       type: 'array',
-      required: true
     }
   },
 

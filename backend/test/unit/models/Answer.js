@@ -10,17 +10,15 @@ describe('Answers', function(){
       var Barrels = require('barrels');
       var barrels = new Barrels();
       var fixtures = barrels.data;
-      barrels.populate(['answer'], function(err){
-        done();
-      });
+      barrels.populate(['answer'], done);
     });
     it('should return statsitic.', function(done){
       Answer.stats(function(err, stats){
         expected = {
-          '1': { agree: 1, disagree: 0, neutral: 0 },
-          '2': { agree: 1, disagree: 0, neutral: 0 },
-          '3': { agree: 0, disagree: 0, neutral: 1 },
-          '4': { agree: 0, disagree: 0, neutral: 1 },
+          '1': { agree: 3, disagree: 0, neutral: 0 },
+          '2': { agree: 3, disagree: 0, neutral: 0 },
+          '3': { agree: 0, disagree: 0, neutral: 2 },
+          '4': { agree: 0, disagree: 0, neutral: 2 },
           '5': { agree: 0, disagree: 1, neutral: 0 }
         }
         expected.should.deep.eq(stats);
