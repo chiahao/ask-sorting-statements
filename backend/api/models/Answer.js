@@ -10,15 +10,15 @@ module.exports = {
 
   attributes: {
     agree: {
-      type: 'json',
+      type: 'array',
       required: true
     },
     disagree: {
-      type: 'json',
+      type: 'array',
       required: true
     },
     neutral: {
-      type: 'json',
+      type: 'array',
       required: true
     }
   },
