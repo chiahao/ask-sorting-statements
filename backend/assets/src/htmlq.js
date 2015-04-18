@@ -3,7 +3,6 @@
  (c) 2014-2015 aproxima Gesellschaft für Markt- und Sozialforschung Weimar http://github.com/aproxima/htmlq
  License: MIT
 */
-
 function xml2json(xml) {
     var x2js = new X2JS();
     var json = x2js.xml_str2json(xml);
@@ -85,12 +84,12 @@ angular.module('app', ['ui.router', 'ui.bootstrap' ])
                         transformResponse: xml2json
                     }).then(function(data, status) {
                         var parseHtml = data.data.statements._htmlParse === 'true';
-                        return _.map(data.data.statements.statement, function(statement) {
+                        return _.sample(_.map(data.data.statements.statement, function(statement) {
                             return {
                                 _id: statement._id,
                                 __text: transformTextToHtml($sce, statement.__text, parseHtml)
                             }
-                        });
+                        }), 5);
                     });
                 }],
                 'paragraphs': ['$http', '$sce', function($http, $sce) {
@@ -212,7 +211,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap' ])
 
 .controller('RootCtrl', ['language', 'statements', 'paragraphs', 'map', 'config', 'configXml', 'SortedStatements', 'Survey', 'Duration', '$sce', '$scope', '$state', '$log', function(language, statements, paragraphs, map, config, configXml, SortedStatements, Survey, Duration, $sce, $scope, $state, $log) {
     $scope.language = language;
-    $scope.statements = statements;
+    $scope.statements = statements
     $scope.paragraphs = paragraphs;
     $scope.map = map;
     $scope.config = config;
