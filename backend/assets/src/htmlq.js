@@ -51,7 +51,7 @@ function shuffleInPlace(o) {
     return o;
 };
 
-angular.module('app', ['ui.router', 'ui.bootstrap'])
+angular.module('app', ['ui.router', 'ui.bootstrap' ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -105,7 +105,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
                             }
                         });
                     });
-                }],                
+                }],
                 'map': ['$http', function($http) {
                     return $http.get('settings/map.xml', {
                         transformResponse: xml2json
@@ -1130,7 +1130,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
             return ret;
         }
         function getIds(statements, cat) {
-            return _.map(_.filter(statements, function(s) { return s.category === cat; }), 
+            return _.map(_.filter(statements, function(s) { return s.category === cat; }),
                 function(s) { return s._id; });
         }
         var statements = clean(SortedStatements);
@@ -1220,7 +1220,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
             return ret;
         }
         var ret = language['mailBody'] + '\n\n' +
-            strFromParam('uid') + 
+            strFromParam('uid') +
             strFromParam('sort') +
             strFromParam('nneg') +
             strFromParam('nneu') +
@@ -1271,7 +1271,29 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
         var paragraph = paragraphs[i];
         $scope.paragraphsMap[paragraph._id] = paragraph;
     }
-    console.log($scope.paragraphsMap);
+    $scope.loadDisqus = function loadDisqus(id){
+        var disqus_id = "disqus-" + id;
+        var disqus_elm = document.getElementById(disqus_id);
+
+        disqus_elm = document.getElementById(disqus_id);
+
+        var threadbox = document.getElementById('disqus_thread');
+        if(threadbox){
+          threadbox.parentNode.removeChild(threadbox);
+        }
+
+        threadbox = document.createElement('div')
+        threadbox.setAttribute('id', 'disqus_thread');
+        disqus_elm.appendChild(threadbox);
+
+        // http://docs.disqus.com/developers/universal/
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://constitutionquizsorting.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    }
 }])
 
 .service('MessageModal', ['$modal', function($modal) {

@@ -9,6 +9,11 @@
                             <p>
                             {{paragraphsMap[statement._id].__text}}
                             </p>
+
+                            <div id="disqus-{{statement._id}}">
+                              <h4 ng-click="loadDisqus(statement._id);">Comments</h4>
+                            </div>
+
                             </li>
                         </ul>
             </div>
@@ -20,7 +25,12 @@
                             <h4>Answer</h4>
                             <p>
                             {{paragraphsMap[statement._id].__text}}
-                            </p>                            
+                            </p>
+
+                            <div id="disqus-{{statement._id}}">
+                              <h4 ng-click="loadDisqus(statement._id);">Comments</h4>
+                            </div>
+
                             </li>
                         </ul>
             </div>
@@ -29,10 +39,19 @@
 			<h2>Disagree</h2>
                         <ul>
                             <li ng-repeat="statement in sortedStatements.disagree" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span>
-                            <h4>Answer</h4>
-                            <p>
-                            {{paragraphsMap[statement._id].__text}}
-                            </p>                            
+                            <div>
+
+                            <div>
+                              <h4>Answer</h4>
+                              <p>
+                              {{paragraphsMap[statement._id].__text}}
+                              </p>
+                            </div>
+
+                            <div id="disqus-{{statement._id}}">
+                              <h4 ng-click="loadDisqus(statement._id);">Comments</h4>
+                            </div>
+
                             </li>
                         </ul>
             </div>
