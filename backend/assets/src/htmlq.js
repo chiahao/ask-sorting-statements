@@ -1265,6 +1265,13 @@ angular.module('app', ['ui.router', 'ui.bootstrap' ])
 }])
 
 .controller('ThanksCtrl', ['language', 'config', 'paragraphs', 'map', 'SortedStatements', 'Survey', 'Duration', 'UserCode', '$http', '$scope', '$state', '$stateParams', '$log', function(language, config, paragraphs, map, SortedStatements, Survey, Duration, UserCode, $http, $scope, $state, $stateParams, $log) {
+    var shn = function(data, status, headers, config){
+      $scope.stats = data.data
+    }
+    var ehn = function(data, status, headers, config){
+
+    }
+    $http.get('/stats').success(shn).error(ehn);
     $scope.sortedStatements = SortedStatements;
     $scope.paragraphsMap = [];
     for(var i = 0; i < paragraphs.length; i++){

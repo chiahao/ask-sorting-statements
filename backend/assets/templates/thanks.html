@@ -4,7 +4,7 @@
 		   	<h2>Agree</h2>
                         <ul>
                             <li ng-repeat="statement in sortedStatements.agree" class="{textright: textAlignRight}">
-                            <b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span>
+                            <b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span> (覺得重要有{{stats[statement._id].agree}}人, 還好的有{{stats[statement._id].neutral}}, 不重要的有{{stats[statement._id].disagree}})
                             <h4>Answer</h4>
                             <p>
                             {{paragraphsMap[statement._id].__text}}
@@ -21,7 +21,7 @@
             <div>
 		   	<h2>Neaurl</h2>
                         <ul>
-                            <li ng-repeat="statement in sortedStatements.neutral" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span>
+                            <li ng-repeat="statement in sortedStatements.neutral" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span> (覺得重要有{{stats[statement._id].agree}}人, 還好的有{{stats[statement._id].neutral}}, 不重要的有{{stats[statement._id].disagree}})
                             <h4>Answer</h4>
                             <p>
                             {{paragraphsMap[statement._id].__text}}
@@ -38,7 +38,7 @@
             <div>
 			<h2>Disagree</h2>
                         <ul>
-                            <li ng-repeat="statement in sortedStatements.disagree" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span>
+                            <li ng-repeat="statement in sortedStatements.disagree" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span>  (覺得重要有{{stats[statement._id].agree}}人, 還好的有{{stats[statement._id].neutral}}, 不重要的有{{stats[statement._id].disagree}})
                             <div>
 
                             <div>
