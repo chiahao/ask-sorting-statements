@@ -213,6 +213,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap' ])
     $scope.language = language;
     $scope.statements = statements
     $scope.paragraphs = paragraphs;
+    console.log(paragraphs);
     $scope.map = map;
     $scope.config = config;
     $scope.configXml = configXml;

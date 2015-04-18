@@ -25,17 +25,17 @@
 <language version="1.0" htmlParse="true">
 
   <!-- misc -->
-  <item id="btnContinue">Continue...</item>
-  <item id="btnclose">Close</item>
+  <item id="btnContinue">繼續...</item>
+  <item id="btnclose">關閉</item>
   <item id="btnHelp">Help me!</item>
-  <item id="btnAgreement">Agree</item>
-  <item id="btnNeutral">Neutral</item>
-  <item id="btnDisagreement">Disagree</item>
-  <item id="btnTransfer">Submit data</item>
+  <item id="btnAgreement">覺得重要</item>
+  <item id="btnNeutral">覺得還好</item>
+  <item id="btnDisagreement">覺得不重要</item>
+  <item id="btnTransfer">送出</item>
   <item id="btnMail">Send via email</item>
   <item id="btnPrint">Print data</item>
   <item id="btnExit">Exit</item>
-  <item id="selectItem">Please select...</item>
+  <item id="selectItem">請選擇...</item>
 
   <!-- Warning when user is trying to leave the page (this item was added for HtmlQ) -->
   <item id="leaveSiteWarning">Your answers will be lost.</item>

@@ -1,7 +1,7 @@
 <div class="row" style="margin-top: 50px;">
     <div class="col-xs-12" ng-class="{textright: textAlignRight}">
             <div>
-		   	<h2>Agree</h2>
+		   	<h2>你覺得重要的問題</h2>
                         <ul>
                             <li ng-repeat="statement in sortedStatements.agree" class="{textright: textAlignRight}">
                             <b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span> (覺得重要有{{stats[statement._id].agree}}人, 還好的有{{stats[statement._id].neutral}}, 不重要的有{{stats[statement._id].disagree}})
@@ -19,7 +19,7 @@
             </div>
 
             <div>
-		   	<h2>Neaurl</h2>
+		   	<h2>你覺得還好的問題</h2>
                         <ul>
                             <li ng-repeat="statement in sortedStatements.neutral" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span> (覺得重要有{{stats[statement._id].agree}}人, 還好的有{{stats[statement._id].neutral}}, 不重要的有{{stats[statement._id].disagree}})
                             <h4>Answer</h4>
@@ -36,7 +36,7 @@
             </div>
 
             <div>
-			<h2>Disagree</h2>
+			<h2>你覺得不重要的問題</h2>
                         <ul>
                             <li ng-repeat="statement in sortedStatements.disagree" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span>  (覺得重要有{{stats[statement._id].agree}}人, 還好的有{{stats[statement._id].neutral}}, 不重要的有{{stats[statement._id].disagree}})
                             <div>

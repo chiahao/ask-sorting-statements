@@ -7,21 +7,21 @@
             <p ng-if="!firstTry" ng-bind-html="language.transferFailed"></p>
 
             <div>
-		   	<h2>Agree</h2>
+		   	<h2>你覺得重要的問題</h2>
                         <ul>
                             <li ng-repeat="statement in sortedStatements.agree" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span></li>
                         </ul>
             </div>
 
             <div>
-		   	<h2>Neaurl</h2>
+		   	<h2>你覺得還好的問題</h2>
                         <ul>
                             <li ng-repeat="statement in sortedStatements.neutral" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span></li>
                         </ul>
             </div>
 
             <div>
-			<h2>Disagree</h2>
+			<h2>你覺得不重要的問題</h2>
                         <ul>
                             <li ng-repeat="statement in sortedStatements.disagree" class="{textright: textAlignRight}"><b>({{ statement._id }})</b> <span ng-bind-html="statement.__text"></span></li>
                         </ul>
